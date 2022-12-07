@@ -1,5 +1,5 @@
 import { users } from "../Actions/Users/UserAction"
-import { CREATE_NEW_USER, DELETE_USER, GET_USERS } from "../types"
+import { CREATE_NEW_USER, DELETE_USER, EDIT_USER, GET_USER, GET_USERS } from "../types"
 
 const initialState = {
     users: [],
@@ -16,9 +16,23 @@ const UserReducer = (state = initialState, { type, payload }) => {
                 loading: false,
                 user: null
             }
+        case GET_USER:
+            return {
+                ...state,
+                user: payload,
+                loading: false,
+                users: state.users
+            }
         case CREATE_NEW_USER:
             return {
                 ...state,
+                user: payload.data,
+                loading: false,
+            }
+        case EDIT_USER:
+            return {
+                ...state,
+                users: state.users,
                 user: payload.data,
                 loading: false,
             }

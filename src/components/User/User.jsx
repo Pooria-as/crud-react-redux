@@ -32,7 +32,9 @@ const User = () => {
       <td>{user.email}</td>
       <td>{user.age}</td>
       <td>
-        <Button variant={`primary`}>Edit</Button>
+        <Button variant={`primary`}>
+          <Link to={`/edit-user/${user.id}`}>Edit</Link>
+        </Button>
       </td>
       <td>
         <Button variant={`danger`} onClick={() => RemoveUserHandler(user.id)}>

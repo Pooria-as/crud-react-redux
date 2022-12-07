@@ -1,18 +1,3 @@
 {
-  "users": [
-    {
-      "name": "pooria",
-      "email": "p.asiabi@gmail.com",
-      "password": "1111111111111111",
-      "age": "22",
-      "id": 1
-    },
-    {
-      "name": "Reza",
-      "email": "hassan@gmail.com",
-      "password": "12311111111111",
-      "age": "56",
-      "id": 2
-    }
-  ]
+  "users": []
 }

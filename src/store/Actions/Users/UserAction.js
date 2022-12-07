@@ -1,6 +1,6 @@
 import axios from "axios"
-import { CREATE_NEW_USER, DELETE_USER, GET_USERS } from "../../types"
-import { v4 as uuidv4 } from 'uuid';
+import { CREATE_NEW_USER, DELETE_USER, EDIT_USER, GET_USER, GET_USERS } from "../../types"
+
 
 
 
@@ -36,6 +36,46 @@ export const Newuser = (name, email, password, age) => async (dispatch) => {
         console.log(error)
     }
 }
+
+
+export const getUserById = (id) => async (dispatch) => {
+    try {
+
+        const userById = await axios.get(process.env.REACT_APP_USERS_API + `/${id}`)
+        const { data } = await userById
+        dispatch({
+            type: GET_USER,
+            payload: data
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+
+
+export const editUser = (UserId, name, email, password, age) => async (dispatch) => {
+    try {
+        const data = {
+            name,
+            email,
+            password,
+            age
+        }
+        await axios.put(process.env.REACT_APP_USERS_API + `/${UserId}`, data)
+        dispatch({
+            type: EDIT_USER,
+            payload: { data, msg: "success" }
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 
 
